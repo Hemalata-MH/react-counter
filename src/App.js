@@ -1,78 +1,76 @@
-import { useState } from "react";
 import "./styles.css";
+import { useState } from "react";
 
 export default function App() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const onSubmitFormData = () => {
-    //console.log("username : " + userName + " password : " + password);
-
-    if (userName === "" || password === "") {
-      alert("Please enter the username & password");
-    } else if (userName !== "" && password !== "") {
-      alert("Please proceed further");
-    }
-  };
-
+  const [counter, setCounter] = useState(0);
   return (
     <div className="App">
-      <h1>Login Form</h1>
-      <form
-        id="loginForm"
-        style={{
-          border: "1px solid #800080"
-        }}
-      >
-        <div
+      <h1>Counter Program</h1>
+      <div>
+        <label
           style={{
-            padding: "20px"
+            padding: "20px",
+            fontFamily: "verdana"
           }}
         >
-          <label>Enter Username : </label>
-          <input
-            type="textbox"
-            id="userName"
-            value={userName}
-            onChange={(e) => {
-              setUserName(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div
+          Counter : {counter}
+        </label>
+        <button
           style={{
-            padding: "20px"
+            backgroundColor: "#4169e1",
+            borderRadius: "20px",
+            height: "30px",
+            width: "50%",
+            color: "white",
+            fontWeight: "bold",
+            padding: "5px",
+            margin: "10px"
+          }}
+          onClick={() => {
+            setCounter(counter + 1);
+            console.log("counter : " + counter);
           }}
         >
-          <label>Enter Password : </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div
+          Increment Counter
+        </button>
+        <button
           style={{
-            padding: "20px"
+            backgroundColor: "#dc143c ",
+            borderRadius: "20px",
+            height: "30px",
+            width: "50%",
+            color: "white",
+            fontWeight: "bold",
+            padding: "5px",
+            marginLeft: "9rem"
+          }}
+          onClick={() => {
+            setCounter(counter - 1);
+            console.log("counter : " + counter);
           }}
         >
-          <input
-            value="Login"
-            type="button"
-            style={{
-              backgroundColor: "#dda0dd",
-              border: "1px solid gray",
-              color: "black",
-              fontWeight: "bold",
-              marginLeft: "45px"
-            }}
-            onClick={onSubmitFormData}
-          ></input>
-        </div>
-      </form>
+          Decrement Counter
+        </button>
+        <button
+          style={{
+            backgroundColor: "#ffa500",
+            borderRadius: "20px",
+            height: "30px",
+            width: "50%",
+            color: "white",
+            fontWeight: "bold",
+            padding: "5px",
+            marginLeft: "9rem",
+            marginTop: "0.7rem"
+          }}
+          onClick={() => {
+            setCounter(0);
+            console.log("counter : " + counter);
+          }}
+        >
+          Reset Counter
+        </button>
+      </div>
     </div>
   );
 }
